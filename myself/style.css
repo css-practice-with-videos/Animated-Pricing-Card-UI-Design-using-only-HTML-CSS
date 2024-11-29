@@ -4,46 +4,51 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    list-style: none;
     font-family: "poppins", serif;
 }
+:root{
+    --primary-color: #d5a3ff ;
+    --secondary-color: #77a5f8;
+    --transition: all 0.3s ease;
+}
 body{
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(#d5a3ff 0%, #77a5f8 100%);
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(#d5a3ff 0%, #77a5f8 100%);
 }
 .wrapper{
-    width: 400px;
+    width: 450px;
     background: #ffffff;
     padding: 30px;
-    border-radius: 16px;
-    box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+    border-radius: 15px;
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.2);
 }
 .wrapper header{
+    width: 100%;;
+    border: 1px solid #cccccc;
+    border-radius: 20px;
     display: flex;
     align-items: center;
-    height: 55px;
-    border: 1px solid #cccccc;
-    border-radius: 30px;
     position: relative;
+    overflow: hidden;
 }
 header label{
     width: 30%;
-    height: 100%;
+    padding: 8px 10px ;
     font-size: 18px;
-    cursor: pointer;
+    text-transform: capitalize;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-content: center;
     user-select: none;
-    position: relative;
     z-index: 2;
-}
-#tap-1:checked ~ header .tap-1,
-#tap-2:checked ~ header .tap-2,
-#tap-3:checked ~ header .tap-3{
-    color: #ffffff;
 }
 header label:nth-child(2){
     width: 40%;
@@ -51,28 +56,36 @@ header label:nth-child(2){
 header .slider{
     position: absolute;
     height: 85%;
+    content: '' ;
     border-radius: inherit;
-    background: linear-gradient( 145deg, #d5a3ff 0%, #77a5f8 100%);
-    transition: all 0.3s ease;
+    background: linear-gradient(145deg, #d5a3ff 0%, #77a5f8 100%);
+    transition: var(--transition);
+}
+#tap-1:checked ~ header .tap-1,
+#tap-2:checked ~ header .tap-2,
+#tap-3:checked ~ header .tap-3{
+    color: #ffffff;
 }
 #tap-1:checked ~ header .slider{
+    width: 100px;
     left: 0;
-    width: 90px;
     transform: translateX(5%);
 }
 #tap-2:checked ~ header .slider{
+    width: 130px;
     left: 50%;
-    width: 120px;
     transform: translateX(-50%);
 }
 #tap-3:checked ~ header .slider{
+    width: 100px;
     left: 100%;
-    width: 95px;
     transform: translateX(-105%);
 }
 .wrapper input[type="radio"]{
     display: none;
 }
+
+
 
 /* cards-area  */
 .cards-area{
@@ -83,10 +96,10 @@ header .slider{
     display: flex;
 }
 .cards .row{
-    width: 33.3%;
+    width: 33.33%;
 }
 .cards .row-1{
-    transition: all 0.3s ease;
+    transition: var(--transition);
 }
 #tap-1:checked ~ .cards-area .cards .row-1{
     margin-left: 0%;
@@ -98,68 +111,58 @@ header .slider{
     margin-left: -66.66%;
 }
 
-/* card .pricing-details  */
-.row .pricing-details{
-    margin: 20px 0;
+
+
+
+.row .price-area{
+    border-bottom: 1px solid #77a5f8;
+    margin: 10px 0;
+    padding: 10px;
     text-align: center;
-    padding-bottom: 25px;
-    border-bottom: 1px solid #e6e6e6;
 }
-.pricing-details span{
+.price-area span{
+    display: inline-block;
     font-size: 65px;
     font-weight: 600;
-    font-family: "Noto Sans", sans-serif;
     position: relative;
 }
-.pricing-details span::before,
-.pricing-details span::after{
-    position: absolute;
-    font-weight: 400;
-    font-family: "poppins", sans-serif;
-    
-}
-.pricing-details span::before{
-    content: '$';
-    left: -13px;
-    top: 17px;
-    font-size: 20px;
-}
-.pricing-details span::after{
-    content: "/Mon";
-    font-size: 13px;
-    right: -33px;
-    bottom: 17px;
-}
-.pricing-details p{
+.price-area span::before,
+.price-area span::after{
     font-size: 18px;
-    margin-top: 5px;
+    font-weight: 400;
+    position: absolute;
+
 }
-.row .features li{
-    list-style: none;
-    font-size: 15px;
-    margin-bottom: 10px;
+.price-area span::before{
+    content: '$';
+    top: 13px;
+    left: -15px;
+}
+.price-area span::after{
+    content: '/Mon';
+    bottom: 15px;
+    right: -45px;
+}
+.features{
+    margin: 20px 0;
+}
+.features li{
+    margin: 10px 0;
     display: flex;
     align-items: center;
 }
 .features li i{
-    color: #77a5f8;
+    color: #77a5f8
 }
 .features li span{
     margin-left: 10px;
 }
 .wrapper button{
     width: 100%;
-    height: 55px;
-    margin-top: 20px;
-    border: none;
-    outline: none;
-    border-radius: 30px;
+    padding: 10px 0;
+    border-radius: 20px;
     font-size: 18px;
+    color: #fff;
     cursor: pointer;
-    color: #ffffff;
-    transition: all 0.3s ease;
-    background: linear-gradient( 145deg, #d5a3ff 0%, #77a5f8 100%);
-}
-.wrapper button:hover{
-    transform: scale(0.98);
+    background: linear-gradient(145deg, #d5a3ff 0%, #77a5f8 100%);
 }
